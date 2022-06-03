@@ -1,0 +1,135 @@
+:root {
+  font-size: 62.5%;
+  --ff-primary:'Palanquin', sans-serif;
+  --ff-secondary:'Staatliches', cursive;
+}
+
+body {
+  margin: auto;
+  width: 38rem;
+
+  font-family: var(--ff-primary);  
+}
+
+header {
+  font-family: var(--ff-secondary);
+  
+  height: 30rem;
+  font-size: 4rem;
+  line-height: 3.4rem;
+  
+  letter-spacing: 0.05em;
+  
+  color: #FFFFFF;
+  background: #8E9AAF;
+
+}
+
+header img {
+  display: flex;
+  margin: auto;
+  padding-top : 3rem;
+  
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #CBC0D3;
+  margin-top: 3rem;
+  height: 5rem;
+}
+
+main {
+  background: #EFF1FF;
+  
+  padding: 2rem 3.2rem 6rem 3.2rem;
+  height: auto;
+  margin-bottom: 5rem;
+}
+
+.page {
+  font-family: var(--ff-primary);
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  letter-spacing: 0em;
+  text-align: center;
+  
+}
+
+.page p {
+  color: #23053A;
+  margin-bottom: 6rem;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.6rem
+}
+.imgbox {
+  font-family: var(--ff-secondary);
+  position: relative;
+  
+}
+
+.imgbox span {
+  position: absolute;
+  top: 2rem;
+  right: 1.5rem;
+  
+  background: #FEEAFA;
+  width: 11.2rem;
+  height: 3.5rem;
+  border-radius: 2rem;
+  text-align: center;
+  
+  font-size: 2rem;
+  line-height: 3.6rem;
+  letter-spacing: 0.05em;
+  color: #4A4E69;
+  animation-delay: 1s;
+  animation: down 750ms;
+  
+}
+
+.imgbox img {
+  object-fit: cover;
+  border-radius: 2rem;
+  width: 32rem;
+  animation: upper 750ms  backwards;
+
+}
+
+/* o atributo é do .grid nth-child(even or odd) */
+.grid .imgbox:nth-child(even) img{
+  height: 45rem;
+} 
+
+.grid .imgbox:nth-child(odd) img{
+  height: 25rem;
+}
+
+@keyframes upper {
+  100% {
+  opacity: 1;
+  transform: translateY(0px);
+  }
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }  
+}
+
+@keyframes down {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
