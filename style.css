@@ -14,7 +14,7 @@ body {
 header {
   font-family: var(--ff-secondary);
   
-  height: 30rem;
+  height: 32rem;
   font-size: 4rem;
   line-height: 3.4rem;
   
@@ -22,14 +22,12 @@ header {
   
   color: #FFFFFF;
   background: #8E9AAF;
-
 }
 
 header img {
   display: flex;
   margin: auto;
   padding-top : 3rem;
-  
 }
 
 header div {
@@ -41,12 +39,14 @@ header div {
   height: 5rem;
 }
 
-main {
+.page {
   background: #EFF1FF;
-  
-  padding: 2rem 3.2rem 6rem 3.2rem;
-  height: auto;
+  padding: 2rem 3.2rem 2rem 3.2rem;
   margin-bottom: 5rem;
+}
+
+header span {
+  visibility: hidden;
 }
 
 .page {
@@ -54,8 +54,7 @@ main {
   font-size: 1.4rem;
   line-height: 1.5rem;
   letter-spacing: 0em;
-  text-align: center;
-  
+  text-align: center;  
 }
 
 .page p {
@@ -63,22 +62,26 @@ main {
   margin-bottom: 6rem;
 }
 
-.grid {
+.grid, .paleta, .shake, .massa, .picole, .picole2, .paleta2 {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 3.6rem
-}
-.imgbox {
-  font-family: var(--ff-secondary);
-  position: relative;
-  
+  gap: 3.6rem;
 }
 
-.imgbox span {
+.paleta img, .shake img, .massa img, .picole img, .paleta2 img, .picole2 img{
+  object-fit: cover;
+  border-radius: 2rem;
+  width: 32rem;
+  animation: upper 750ms;
+}
+
+.paleta span, .shake span, .massa span, .picole span, .paleta2 span, .picole2 span {
   position: absolute;
   top: 2rem;
   right: 1.5rem;
   
+  font-family: var(--ff-secondary);
   background: #FEEAFA;
   width: 11.2rem;
   height: 3.5rem;
@@ -89,33 +92,30 @@ main {
   line-height: 3.6rem;
   letter-spacing: 0.05em;
   color: #4A4E69;
-  animation-delay: 1s;
-  animation: down 750ms;
+  z-index: 1;
   
+  animation: down 750ms;
 }
 
-.imgbox img {
-  object-fit: cover;
-  border-radius: 2rem;
-  width: 32rem;
-  animation: upper 750ms  backwards;
-
-}
-
-/* o atributo é do .grid nth-child(even or odd) */
-.grid .imgbox:nth-child(even) img{
-  height: 45rem;
-} 
-
-.grid .imgbox:nth-child(odd) img{
+.paleta img, .massa img, .paleta2 img {
   height: 25rem;
 }
 
+.shake img, .picole img, .picole2 img {
+  height: 45rem;
+} 
+
+.paleta2, .picole2, footer {
+    display: none;
+}
+
+
 @keyframes upper {
   100% {
-  opacity: 1;
-  transform: translateY(0px);
+    opacity: 1;
+    transform: translateY(0px);
   }
+
   0% {
     opacity: 0;
     transform: translateY(2rem);
@@ -124,12 +124,114 @@ main {
 
 @keyframes down {
   0% {
-    opacity: 0;
-    transform: translateY(-2rem);
+    opacity: 0.5;
+    transform: translateY(-4rem);
   }
-
+    
   100% {
     opacity: 1;
     transform: translateY(0rem);
   }
 }
+
+@media (min-width: 900px) {
+  body {
+    display: flex;
+    width: 128rem;
+    height: 72rem;
+  }
+
+  .page {
+    background: #EFF1FF;
+    height: 72rem;
+  }
+
+  header {
+    display: flex;
+    min-width: 38rem;
+    height: 720px;
+    flex-direction: column;
+  }
+  
+  header img {
+    display: flex;
+    margin: 3rem auto;
+  }
+  
+  header span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    letter-spacing: 0em;
+    text-align: center;
+    
+    margin: 5rem 5rem;
+    visibility: visible;
+  }
+  
+  .page p {
+    display: none;
+  }
+
+  header div {
+    display: flex;
+    margin-top: 0;
+  }
+
+  .grid {
+    display: grid;
+    padding: 3rem 2rem 3rem 2rem;
+
+    max-height: 72rem;
+    grid-template-areas: 
+    "paleta shake paleta2"
+    "picole shake picole2"
+    "picole massa picole2";
+    
+  }
+  .grid img {
+    max-width: 22rem;
+  }
+
+  .grid :nth-child(even) img {
+    max-height: 35rem;
+  }
+  .grid :nth-child(odd) img {
+    max-height: 15rem;
+  }
+
+  .paleta{
+    grid-area: paleta;
+  }
+  
+  .shake {
+    grid-area: shake;
+  }
+
+  .picole {
+    grid-area: picole;
+  }
+
+  .paleta2{
+    grid-area: paleta2;
+    display: block;
+  }
+
+  .picole2{
+    grid-area: picole2;
+    display: block;
+  }
+
+  .massa {
+    grid-area: massa;
+  }
+}
+
+footer {
+  font-family: var(--ff-secondary);
+  display: block;
+  color: #4A4E69;
+  margin: 5rem auto;
+  text-decoration: none;
+}
+
